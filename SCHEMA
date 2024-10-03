@@ -1,0 +1,68 @@
+-- Create Customers table
+CREATE TABLE Customers (
+customer_id INTEGER PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+contact_number VARCHAR(15) NOT NULL,
+email_address VARCHAR(100) NOT NULL
+);
+
+-- Create Optometrists table
+CREATE TABLE Optometrists (
+optometrist_id INTEGER PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+contact_number VARCHAR(15) NOT NULL,
+email_address VARCHAR(100) NOT NULL,
+license_number VARCHAR(50) NOT NULL
+);
+
+-- Create Prescriptions table
+CREATE TABLE Prescriptions (
+prescription_id INTEGER PRIMARY KEY,
+customer_id INTEGER NOT NULL,
+optometrist_id INTEGER NOT NULL,
+right_eye_power DECIMAL(4, 2),
+left_eye_power DECIMAL(4, 2),
+eye_exam_date DATE NOT NULL,
+notes TEXT
+);
+
+-- Create Appointments table
+CREATE TABLE Appointments (
+appointment_id INTEGER PRIMARY KEY,
+customer_id INTEGER NOT NULL,
+optometrist_id INTEGER NOT NULL,
+appointment_date DATE NOT NULL,
+status VARCHAR(50) NOT NULL
+);
+
+-- Create Products table
+CREATE TABLE Products (
+product_id INTEGER PRIMARY KEY,
+product_name VARCHAR(100) NOT NULL,
+category VARCHAR(50) NOT NULL,
+price DECIMAL(10, 2) NOT NULL,
+stock_quantity INTEGER NOT NULL
+);
+
+-- Create Orders table
+CREATE TABLE Orders (
+order_id INTEGER PRIMARY KEY,
+customer_id INTEGER NOT NULL,
+order_date DATE NOT NULL,
+total_amount DECIMAL(10, 2) NOT NULL,
+payment_method VARCHAR(50) NOT NULL,
+payment_status VARCHAR(50) NOT NULL,
+payment_date DATE
+);
+
+-- Create Order_Items table
+CREATE TABLE Order_Items (
+order_item_id INTEGER PRIMARY KEY,
+order_id INTEGER NOT NULL,
+product_id INTEGER NOT NULL,
+quantity INTEGER NOT NULL,
+unit_price DECIMAL(10, 2) NOT NULL,
+total_price DECIMAL(10, 2) NOT NULL
+);
